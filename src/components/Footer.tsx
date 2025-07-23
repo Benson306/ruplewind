@@ -104,7 +104,7 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-2 text-primary-foreground/80" />
-                <span className="text-primary-foreground/80">info@ruplewind.com</span>
+                <span className="text-primary-foreground/80">ruplewindlimited@gmail.com</span>
               </div>
               <div className="text-primary-foreground/80">
                 Nairobi, Kenya
