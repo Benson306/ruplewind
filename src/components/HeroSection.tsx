@@ -10,7 +10,7 @@ const HeroSection = () => {
 
   const openRupleart = () => {
     // This would open the Rupleart website/section
-    window.open('#rupleart', '_blank');
+    window.open('https://rupleart.com', '_blank');
   };
 
   return (

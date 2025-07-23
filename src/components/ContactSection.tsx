@@ -17,20 +17,55 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Here you would typically send the form data to your backend
-    toast({
-      title: "Message sent successfully!",
-      description: "Thank you for your interest. We'll get back to you soon.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+
+    if(formData.name ==  null || formData.email == null || formData.subject ==null || formData.message == null){
+            toast({
+              title:"Failed!", 
+              description: "All fields must be filled",
+            });
+            return;
+        }
+
+        fetch('https://api.rupleart.com/send_message',{
+            method: 'POST',
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({
+                name: formData.email, email: formData.email, message: formData.message
+            })
+        })
+        .then((res)=>{
+            if(res.ok){
+                // Reset form
+                setFormData({
+                  name: '',
+                  email: '',
+                  subject: '',
+                  message: ''
+                });
+
+                toast({
+                  title: "Message sent successfully!",
+                  description: "Thank you for your interest. We'll get back to you soon.",
+                });
+
+                setTimeout(()=>{
+                    window.location.reload()
+                },700);
+            }else{
+              toast({
+                title:"Failed!", 
+                description: "Message Not Sent! Retry",
+              });
+            }
+        })
+        .catch(errr=> {
+            toast({
+              title:"Failed!", 
+              description: "Message Not Sent! Retry",
+            });
+        })
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -129,7 +164,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-foreground">Email</h3>
-                      <p className="text-muted-foreground">info@ruplewind.com</p>
+                      <p className="text-muted-foreground">ruplewindlimited@gmail.com</p>
                     </div>
                   </div>
                 </CardContent>
@@ -143,7 +178,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-foreground">Phone</h3>
-                      <p className="text-muted-foreground">+254 XXX XXX XXX</p>
+                      <p className="text-muted-foreground">+254 712 907 877</p>
                     </div>
                   </div>
                 </CardContent>

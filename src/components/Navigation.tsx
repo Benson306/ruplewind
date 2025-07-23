@@ -17,7 +17,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-primary">Ruplewind</h1>
+            <h1 className="text-2xl font-bold text-primary">Ruplewind Limited</h1>
           </div>
 
           {/* Desktop Navigation */}
